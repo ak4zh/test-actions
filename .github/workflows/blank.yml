@@ -11,12 +11,10 @@ jobs:
     name: Test the action
     runs-on: ubuntu-22.04
     env: 
-      WEBHOOK_URL: ${{ vars.WEBHOOK_URL }}
+      webhook_url: ${{ vars.WEBHOOK_URL }}
     steps:
       - name: Log
         shell: bash
-        run: echo " $WEBHOOK_URL"
+        run: echo "$webhook_url"
       - name: Webhook
         uses: distributhor/workflow-webhook@v3.0.5
-        with:
-            url: "$WEBHOOK_URL"
