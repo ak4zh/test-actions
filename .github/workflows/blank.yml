@@ -10,11 +10,13 @@ jobs:
     #if: "contains(github.event.head_commit.message, 'backend')"
     name: Test the action
     runs-on: ubuntu-22.04
+    env: 
+      WEBHOOK_URL: ${{ vars.WEBHOOK_URL }}
     steps:
       - name: Log
         shell: bash
-        run: echo " $WEBHOOK_URL + ${{env.WEBHOOK_URL}}"
+        run: echo " $WEBHOOK_URL"
       - name: Webhook
         uses: distributhor/workflow-webhook@v3.0.5
         with:
-            url: "${{env.WEBHOOK_URL}}"
+            url: "$WEBHOOK_URL"
